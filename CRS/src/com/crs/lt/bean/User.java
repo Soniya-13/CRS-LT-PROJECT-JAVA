@@ -7,14 +7,14 @@ package com.crs.lt.bean;
  * @author user218
  *
  */
-public class User {
-	private String userId;
+public abstract class User {
+	private int userId;
 	private String name;
 	private String role;
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getName() {

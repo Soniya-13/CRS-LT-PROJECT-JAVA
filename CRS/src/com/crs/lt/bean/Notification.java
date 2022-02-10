@@ -10,33 +10,35 @@ package com.crs.lt.bean;
 public class Notification {
 
 	private int notificationId;
-	private int studentId;
-	private String notificationType;
-	private String refId;
+	private Student studentId;
+	private String notificationMessage;
+	private int refId;
 	public int getNotificationId() {
 		return notificationId;
 	}
 	public void setNotificationId(int notificationId) {
 		this.notificationId = notificationId;
 	}
-	public int getStudentId() {
+
+	public Student getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(int studentId) {
+	public void setStudentId(Student studentId) {
 		this.studentId = studentId;
 	}
-	public String getNotificationType() {
-		return notificationType;
+	public String getNotificationMessage() {
+		return notificationMessage;
 	}
-	public void setNotificationType(String notificationType) {
-		this.notificationType = notificationType;
+	public void setNotificationMessage(String notificationMessage) {
+		this.notificationMessage = notificationMessage;
 	}
-	public String getRefId() {
+	public int getRefId() {
 		return refId;
 	}
-	public void setRefId(String refId) {
+	public void setRefId(int refId) {
 		this.refId = refId;
 	}
+	
 
 
 }

@@ -7,7 +7,7 @@ package com.crs.lt.bean;
  * @author user218
  *
  */
-public class Student{
+public class Student extends User{
 	private String branchName;
 	private int studentId;
 	private int batch;
