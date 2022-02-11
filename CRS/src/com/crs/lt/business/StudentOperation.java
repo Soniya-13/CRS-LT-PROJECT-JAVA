@@ -1,23 +1,49 @@
 package com.crs.lt.business;
 
+import java.util.Set;
+
 import com.crs.lt.bean.GradeCard;
+import com.crs.lt.bean.Student;
+import com.crs.lt.dao.StudentDaoImpl;
+import com.crs.lt.dao.StudentDaoInterface;
 
 public class StudentOperation implements StudentInterface{
 
-	public void changePassword() {
-		// TODO Auto-generated method stub
+	StudentDaoInterface studentDaoInterface = new StudentDaoImpl();;
+	
+	public void register(Student student) {
+		
+		Student student1 = new Student();
+		student1.setName(student.getName());
+		student1.setBranchName(student.getBranchName());
+		student1.setBatch(student.getBatch());
+		student1.setRole("STUDENT");
+		student1.setGradeCard(null);
+		studentDaoInterface.addStudent(student1);
+	}
+
+	public GradeCard viewGradeCard(int studentId) {		
+		return studentDaoInterface.getStudentById(studentId).getGradeCard();
+	
+	}
+
+	public Student getStudentById(int studentId) {
+		return studentDaoInterface.getStudentById(studentId);
+	}
+
+	public void deleteStudent(int studentId) {
+		studentDaoInterface.deleteStudent(studentId);
+		System.out.println("Student Deleted scuccessfully");
+	}
+
+	public Student updateStudent(Student student) {
+		return studentDaoInterface.updateStudent(student);
 		
 	}
 
-	public void register() {
-		// TODO Auto-generated method stub
-		
+	public Set<Student> listStudent() {
+		return studentDaoInterface.listStudent();
 	}
 
-	public GradeCard viewGradeCard() {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
 
 }
