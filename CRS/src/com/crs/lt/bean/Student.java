@@ -67,4 +67,9 @@ public class Student extends User{
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Student [branchName=" + branchName + ", studentId=" + studentId
+				+ ", batch=" + batch + ", gradeCard=" + gradeCard + "]";
+	}
 }

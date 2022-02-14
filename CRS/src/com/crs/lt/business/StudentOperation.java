@@ -37,6 +37,8 @@ public class StudentOperation implements StudentInterface{
 	}
 
 	public Student updateStudent(Student student) {
+		System.out.println("Student Id:"+student.getStudentId() +" "+ student.getName() +" "+ student.getRole()
+				+" "+ student.getBatch() +" "+ student.getBranchName());
 		return studentDaoInterface.updateStudent(student);
 		
 	}

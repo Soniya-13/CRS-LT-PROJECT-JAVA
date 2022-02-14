@@ -2,6 +2,10 @@ package com.crs.lt.application;
 
 import java.util.Scanner;
 
+import com.crs.lt.bean.Student;
+import com.crs.lt.business.StudentInterface;
+import com.crs.lt.business.StudentOperation;
+
 public class Application {
 
 	/**
@@ -43,15 +47,9 @@ public class Application {
 		}
 		
 		public static void getStudentMenu(){
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Enter Student Id:");
-			int studentId = sc.nextInt();
-			System.out.println("Enter Student Name:");
-			String name = sc.nextLine();
-			System.out.println("Enter Branch Name:");
-			String branchName = sc.nextLine();
-			System.out.println("Enter Batch:");
-			int batch = sc.nextInt();
+			CRSStudentMenu studentMenu = new CRSStudentMenu();	
+			studentMenu.studentMenu();
+			
 		}
 		public static void getAdminMenu() {
 			// TODO Auto-generated method stub
