@@ -10,9 +10,18 @@ import java.util.Date;
  *
  */
 public class Professor extends User{
+	private int professorId;
 	private String department;
 	private String designation;
 	private Date doj;
+	
+
+	public int getProfessorId() {
+		return professorId;
+	}
+	public void setProfessorId(int professorId) {
+		this.professorId = professorId;
+	}
 	public Date getDoj() {
 		return doj;
 	}

@@ -9,23 +9,10 @@ package com.crs.lt.bean;
  */
 public class Notification {
 
-	private int notificationId;
-	private Student studentId;
+	
 	private String notificationMessage;
 	private int refId;
-	public int getNotificationId() {
-		return notificationId;
-	}
-	public void setNotificationId(int notificationId) {
-		this.notificationId = notificationId;
-	}
-
-	public Student getStudentId() {
-		return studentId;
-	}
-	public void setStudentId(Student studentId) {
-		this.studentId = studentId;
-	}
+	
 	public String getNotificationMessage() {
 		return notificationMessage;
 	}

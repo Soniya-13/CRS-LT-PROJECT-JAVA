@@ -4,7 +4,14 @@ public class Payment {
 private Student studentId;
 private Notification refId;
 private float amount;
-private boolean status;
+private String modeOfPayment;
+
+public String getModeOfPayment() {
+	return modeOfPayment;
+}
+public void setModeOfPayment(String modeOfPayment) {
+	this.modeOfPayment = modeOfPayment;
+}
 public Student getStudentId() {
 	return studentId;
 }
@@ -23,10 +30,5 @@ public float getAmount() {
 public void setAmount(float amount) {
 	this.amount = amount;
 }
-public boolean isStatus() {
-	return status;
-}
-public void setStatus(boolean status) {
-	this.status = status;
-}
+
 }

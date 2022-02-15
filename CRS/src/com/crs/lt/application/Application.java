@@ -50,7 +50,12 @@ public class Application {
 			CRSStudentMenu studentMenu = new CRSStudentMenu();	
 			studentMenu.studentMenu();
 			
+			CRSCourse studentMenu = new CRSStudentMenu();	
+			studentMenu.studentMenu();
+			
 		}
+		
+		
 		public static void getAdminMenu() {
 			// TODO Auto-generated method stub
 			
