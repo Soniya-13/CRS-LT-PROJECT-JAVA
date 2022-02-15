@@ -137,10 +137,10 @@ public class CourseDaoImpl implements CourseDaoInterface {
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			while (rs.next()) {				
-				courseList.add(new Course(rs.getString("courseCode"), rs
-						.getString("courseName"), rs.getInt("catalogId"), rs
-						.getInt("seats"), rs.getFloat("courseFee"), rs
-						.getInt("professorId")));
+				courseList.add(new Course(rs.getString("course_code"), rs
+						.getString("course_name"), rs.getInt("catalog_id"), rs
+						.getInt("seats"), rs.getFloat("course_fee"), rs
+						.getInt("professor_id")));
 			}
 			return courseList;
 		} catch (Exception e) {

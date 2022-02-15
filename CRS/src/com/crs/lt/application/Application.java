@@ -1,5 +1,6 @@
 package com.crs.lt.application;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.crs.lt.bean.Student;
@@ -10,11 +11,12 @@ public class Application {
 
 	/**
 	 * @param args
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		getMenu();
 	}
-		public static void getMenu(){
+		public static void getMenu() throws SQLException{
 		Scanner sc= new Scanner(System.in);
 		int operation;
 		System.out.println("CRS Application Menu:");
@@ -46,12 +48,12 @@ public class Application {
 			
 		}
 		
-		public static void getStudentMenu(){
-			CRSStudentMenu studentMenu = new CRSStudentMenu();	
-			studentMenu.studentMenu();
-			
-			CRSCourse studentMenu = new CRSStudentMenu();	
-			studentMenu.studentMenu();
+		public static void getStudentMenu() throws SQLException{
+//			CRSStudentMenu studentMenu = new CRSStudentMenu();	
+//			studentMenu.studentMenu();
+//			
+			CRSCourseMenu studentMenu = new CRSCourseMenu();	
+			studentMenu.courseMenu();
 			
 		}
 		
