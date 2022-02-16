@@ -3,6 +3,7 @@
  */
 package com.crs.lt.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
@@ -13,13 +14,8 @@ import com.crs.lt.bean.Student;
  *
  */
 public interface StudentDaoInterface {
-	public void addStudent(Student student);
+	public void addStudent(Student student) throws SQLException;
 
-	public Student getStudentById(int studentId);
+	public int getStudentById(int studentId);
 
-	public void deleteStudent(int studentId);
-	
-	public Student updateStudent(Student student);
-	
-	public Set<Student> listStudent();
 }

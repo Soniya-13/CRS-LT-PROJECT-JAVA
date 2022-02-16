@@ -3,6 +3,11 @@
  */
 package com.crs.lt.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,76 +19,65 @@ import com.crs.lt.bean.Student;
  *
  */
 public class StudentDaoImpl implements StudentDaoInterface{
-	//List<Student> studentList = new ArrayList<Student>();	
-	Set<Student> studentSet = new HashSet<Student>();
-	private static int count = 0;
-	public void addStudent(Student student) {
-		// TODO Auto-generated method stub
-		student.setStudentId(++count);
-		studentSet.add(student);
-		
-	}
 
-	public Student getStudentById(int studentId) {
-		Iterator itr = studentSet.iterator();
-		while (itr.hasNext()) {
-			Student student = (Student) itr.next();
-			if (student.getStudentId() == studentId) {
-				return student;
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://localhost/test";
+
+	static final String USER = "root";
+	static final String PASS = "root";
+	Connection conn=null;
+	PreparedStatement  stmt=null;
+	ResultSet rs=null;
+
+	public void addStudent(Student student) throws SQLException {
+		try {
+			Class.forName(JDBC_DRIVER);
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			String sql = "insert into user values(?,?,?)";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, student.getUserId());
+			stmt.setString(2, student.getName());
+			stmt.setString(3, student.getRole());
+			int row = stmt.executeUpdate();
+			if (row == 1) {
+
+				String sql1 = "insert into student values(?,?,?,?)";
+				stmt = conn.prepareStatement(sql1);
+				stmt.setInt(1, student.getStudentId());
+				stmt.setString(2, student.getBranchName());
+				stmt.setInt(3, student.getBatch());
+				stmt.setBoolean(4, false);
+				System.out.println("Number of Records got inserted:::"
+						+ stmt.executeUpdate());
 			}
+			stmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e);
 		}
-		return null;
+		finally{
+			stmt.close();
+			conn.close();
+		}
+
 	}
 
-	public void deleteStudent(int studentId) {
-		// TODO Auto-generated method stub
-		Iterator itr = studentSet.iterator();
-		while (itr.hasNext()) {
-			System.out.println("inside while:::");
-			Student student = (Student) itr.next();
-			System.out.println("in dao studentId:: "+studentId);
-			System.out.println("indao "+student.toString());
-			if (student.getStudentId() == studentId) {
-				System.out.println("inside if:::");
-				studentSet.remove(student);
-				return;
+	public int getStudentById(int studentId) {
+		try {
+			Class.forName(JDBC_DRIVER);
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			String sql = "select studentId from student where userId = ?";
+			stmt.setInt(1, studentId);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next())
+			{
+				return rs.getInt("studentId");
 			}
+		} catch (Exception e) {
+			System.out.println(e);
 		}
+		return 0;
 	}
 
-	public Student updateStudent(Student student) {
-		
-		Iterator<Student> itr = studentSet.iterator();
-		while (itr.hasNext()) {
-			System.out.println("inside while:::");
-			System.out.println("while student Id:::"+student.getStudentId());	
-			System.out.println("itr next"+itr.next().getStudentId());
-			Student student1 =  itr.next();
-			if (student1.getStudentId() == student.getStudentId()) {	
-				System.out.println("inside if:::");
-				
-				student1.setBatch(student.getBatch());
-				student1.setBranchName(student.getBranchName());
-				student1.setName(student.getName());
-				System.out.println("student1" +student1.toString());
-				return student1;
-			}
-			System.out.println("outside if::");
-		}
-//		for(Student student1: studentSet){
-//			if (student1.getStudentId() == student.getStudentId()) {
-//				student1.setBatch(student.getBatch());
-//				student1.setBranchName(student.getBranchName());
-//				student1.setName(student.getName());
-//				return student1;
-//			}
-//		}
-		return null;
+
 	}
-
-	public Set<Student> listStudent() {
-
-		return studentSet;
-	}
-
-}

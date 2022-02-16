@@ -26,7 +26,7 @@ public interface CourseDaoInterface {
 	
 	public List<Course> viewCourse()throws SQLException ;
 	
-	public List<Course> viewRegisteredCourses(int StudentId);
+	public List<StudentGrade> viewRegisteredCourses(int StudentId) throws SQLException;
 	
 	public List<StudentGrade> viewGradeCard(int studentId);
 	

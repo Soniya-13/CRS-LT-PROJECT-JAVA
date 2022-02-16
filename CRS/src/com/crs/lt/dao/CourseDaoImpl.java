@@ -17,6 +17,7 @@ import com.crs.lt.bean.Payment;
 import com.crs.lt.bean.Professor;
 import com.crs.lt.bean.StudentGrade;
 import com.crs.lt.bean.User;
+import com.crs.lt.constant.SQLQueriesConstants;
 
 
 /**
@@ -42,9 +43,7 @@ public class CourseDaoImpl implements CourseDaoInterface {
 		try {
 			Class.forName(JDBC_DRIVER);
 			conn = DriverManager.getConnection(DB_URL, USER, PASS); // connection
-			// System.out.println("Database connected");
-			String sql = "insert into course values(?,?,?,?,?,?)";
-			stmt = conn.prepareStatement(sql);
+			stmt = conn.prepareStatement(SQLQueriesConstants.INSERT_COURSE);
 			stmt.setString(1, course.getCourseCode());
 			stmt.setString(2, course.getCourseName());
 			stmt.setInt(3, course.getCatalogId());
@@ -69,9 +68,8 @@ public class CourseDaoImpl implements CourseDaoInterface {
 	public void deleteCourse(String courseCode) throws SQLException {
 		try {
 			Class.forName(JDBC_DRIVER);
-			conn = DriverManager.getConnection(DB_URL, USER, PASS); // connection
-			String sql = "delete  from course where course_code = ?";
-			stmt = conn.prepareStatement(sql);
+			conn = DriverManager.getConnection(DB_URL, USER, PASS); 
+			stmt = conn.prepareStatement(SQLQueriesConstants.DELETE_COURSE);
 			stmt.setString(1, courseCode);
 			System.out.println("Number of Records deleted:::"
 					+ stmt.executeUpdate());
@@ -90,9 +88,8 @@ public class CourseDaoImpl implements CourseDaoInterface {
 		try {
 
 			Class.forName(JDBC_DRIVER);
-			conn = DriverManager.getConnection(DB_URL, USER, PASS); // connection
-			String sql = "update  course set course_name = ?, course_fee = ?  where course_code = ?";
-			stmt = conn.prepareStatement(sql);
+			conn = DriverManager.getConnection(DB_URL, USER, PASS); 
+			stmt = conn.prepareStatement(SQLQueriesConstants.UPDATE_COURSE);
 			stmt.setString(1, courseName);
 			stmt.setFloat(2, courseFee);
 			stmt.setString(3, courseCode);
@@ -101,7 +98,7 @@ public class CourseDaoImpl implements CourseDaoInterface {
 					+ stmt.executeUpdate());
 			if (stmt.executeUpdate() > 0) {
 				rs = stmt
-						.executeQuery("select course_code, course_name, course_fee, catalog_id, course_fee,professor_id from course");
+						.executeQuery(SQLQueriesConstants.SELECT_COURSE);
 				Course course = new Course();
 				// Professor prof = new Professor();
 				User user = new Professor();
@@ -154,9 +151,30 @@ public class CourseDaoImpl implements CourseDaoInterface {
 		return null;
 	}
 
-	public List<Course> viewRegisteredCourses(int StudentId) {
-		
-		return null;
+	public List<StudentGrade> viewRegisteredCourses(int StudentId) throws SQLException {
+		List<StudentGrade> grade_List = new ArrayList<StudentGrade>();
+		try {
+			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_GRADE);
+			stmt.setInt(1, StudentId);
+			rs = stmt.executeQuery();
+			
+			while(rs.next())
+			{
+				String courseCode = rs.getString("courseCode");
+				String courseName = rs.getString("courseName");
+				String grade = rs.getString("grade");
+				StudentGrade obj = new StudentGrade(courseCode, courseName,grade);
+				grade_List.add(obj);
+				return grade_List;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			stmt.close();
+			conn.close();
+		}
+		return grade_List;
 	}
 
 	public List<StudentGrade> viewGradeCard(int studentId) {

@@ -4,6 +4,9 @@ public class StudentGrade {
 	private String courseCode;
 	private String courseName;
 	private String grade;
+	public StudentGrade(String courseCode2, String courseName2, String grade2) {
+		// TODO Auto-generated constructor stub
+	}
 	public String getCourseCode() {
 		return courseCode;
 	}
