@@ -1,0 +1,83 @@
+20:25:25,587  INFO CRSApplication,main:75 - Course Registration System
+20:25:25,593  INFO CRSApplication,main:76 - 1. Login
+20:25:25,594  INFO CRSApplication,main:77 - 2. Student Registration
+20:25:25,594  INFO CRSApplication,main:78 - 3. Update password
+20:25:25,595  INFO CRSApplication,main:79 - 4. Exit
+20:25:25,596  INFO CRSApplication,main:80 - Enter input
+20:25:46,770  INFO CRSApplication,main:165 - Student Registration-----
+20:25:46,771  INFO CRSApplication,main:166 - Name:
+20:25:55,495  INFO CRSApplication,main:168 - Email:
+20:26:08,987  INFO CRSApplication,main:170 - Password:
+20:26:22,222  INFO CRSApplication,main:172 - Gender: 	 1: Male 	 2.Female	 3.Other
+20:26:31,598  INFO CRSApplication,main:175 - Branch:
+20:26:46,027  INFO CRSApplication,main:177 - Batch:
+20:26:50,763  INFO CRSApplication,main:180 - Address:
+20:39:51,737  INFO CRSApplication,main:75 - Course Registration System
+20:39:51,744  INFO CRSApplication,main:76 - 1. Login
+20:39:51,744  INFO CRSApplication,main:77 - 2. Student Registration
+20:39:51,745  INFO CRSApplication,main:78 - 3. Update password
+20:39:51,745  INFO CRSApplication,main:79 - 4. Exit
+20:39:51,746  INFO CRSApplication,main:80 - Enter input
+20:39:55,145  INFO CRSApplication,main:165 - Student Registration-----
+20:39:55,146  INFO CRSApplication,main:166 - Name:
+20:39:59,013  INFO CRSApplication,main:168 - Email:
+20:40:04,029  INFO CRSApplication,main:170 - Password:
+20:40:09,005  INFO CRSApplication,main:174 - Branch:
+20:44:23,690  INFO CRSApplication,main:75 - Course Registration System
+20:44:23,696  INFO CRSApplication,main:76 - 1. Login
+20:44:23,697  INFO CRSApplication,main:77 - 2. Student Registration
+20:44:23,697  INFO CRSApplication,main:78 - 3. Update password
+20:44:23,699  INFO CRSApplication,main:79 - 4. Exit
+20:44:23,699  INFO CRSApplication,main:80 - Enter input
+20:44:26,003  INFO CRSApplication,main:165 - Student Registration-----
+20:44:26,004  INFO CRSApplication,main:166 - Name:
+20:44:28,622  INFO CRSApplication,main:168 - Email:
+20:44:35,942  INFO CRSApplication,main:170 - Password:
+20:44:38,954  INFO CRSApplication,main:174 - Branch:
+20:44:40,848  INFO CRSApplication,main:176 - Batch:
+20:44:44,327 ERROR CRSApplication,main:187 - Error ben not registered.
+20:44:44,327  INFO CRSApplication,main:75 - Course Registration System
+20:44:44,329  INFO CRSApplication,main:76 - 1. Login
+20:44:44,329  INFO CRSApplication,main:77 - 2. Student Registration
+20:44:44,329  INFO CRSApplication,main:78 - 3. Update password
+20:44:44,329  INFO CRSApplication,main:79 - 4. Exit
+20:44:44,330  INFO CRSApplication,main:80 - Enter input
+20:47:06,574  INFO CRSApplication,main:91 - Login
+20:47:06,575  INFO CRSApplication,main:92 - Email:
+20:47:12,460  INFO CRSApplication,main:94 - Password:
+20:47:15,549  INFO UserDaoOperation,main:116 - Something went wrong, please try again! Unknown column 'password' in 'field list'
+20:47:15,550 ERROR CRSApplication,main:144 - Invalid Credentials!
+20:47:15,550  INFO CRSApplication,main:75 - Course Registration System
+20:47:15,550  INFO CRSApplication,main:76 - 1. Login
+20:47:15,551  INFO CRSApplication,main:77 - 2. Student Registration
+20:47:15,551  INFO CRSApplication,main:78 - 3. Update password
+20:47:15,552  INFO CRSApplication,main:79 - 4. Exit
+20:47:15,552  INFO CRSApplication,main:80 - Enter input
+20:50:39,640  INFO CRSApplication,main:91 - Login
+20:50:39,641  INFO CRSApplication,main:92 - Email:
+20:50:44,795  INFO CRSApplication,main:94 - Password:
+20:50:46,986  INFO UserDaoOperation,main:116 - Something went wrong, please try again! Unknown column 'userId' in 'where clause'
+20:50:46,987 ERROR CRSApplication,main:144 - Invalid Credentials!
+20:50:46,988  INFO CRSApplication,main:75 - Course Registration System
+20:50:46,988  INFO CRSApplication,main:76 - 1. Login
+20:50:46,988  INFO CRSApplication,main:77 - 2. Student Registration
+20:50:46,988  INFO CRSApplication,main:78 - 3. Update password
+20:50:46,989  INFO CRSApplication,main:79 - 4. Exit
+20:50:46,989  INFO CRSApplication,main:80 - Enter input
+20:58:49,025  INFO CRSApplication,main:75 - Course Registration System
+20:58:49,031  INFO CRSApplication,main:76 - 1. Login
+20:58:49,032  INFO CRSApplication,main:77 - 2. Student Registration
+20:58:49,032  INFO CRSApplication,main:78 - 3. Update password
+20:58:49,033  INFO CRSApplication,main:79 - 4. Exit
+20:58:49,033  INFO CRSApplication,main:80 - Enter input
+20:59:09,635  INFO CRSApplication,main:91 - Login
+20:59:09,636  INFO CRSApplication,main:92 - Email:
+20:59:12,894  INFO CRSApplication,main:94 - Password:
+20:59:15,442  INFO UserDaoOperation,main:116 - Something went wrong, please try again! Unknown column 'userId' in 'where clause'
+20:59:15,445 ERROR CRSApplication,main:144 - Invalid Credentials!
+20:59:15,446  INFO CRSApplication,main:75 - Course Registration System
+20:59:15,446  INFO CRSApplication,main:76 - 1. Login
+20:59:15,447  INFO CRSApplication,main:77 - 2. Student Registration
+20:59:15,447  INFO CRSApplication,main:78 - 3. Update password
+20:59:15,448  INFO CRSApplication,main:79 - 4. Exit
+20:59:15,448  INFO CRSApplication,main:80 - Enter input
