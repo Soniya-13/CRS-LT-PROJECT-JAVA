@@ -40,4 +40,9 @@ public class Professor extends User{
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+	@Override
+	public String toString() {
+		return "Professor [professorId=" + professorId + ", department=" + department + ", designation=" + designation
+				+ ", doj=" + doj + "]";
+	}
 }

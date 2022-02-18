@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.crs.lt.bean.Student;
 
 /**
@@ -28,7 +30,7 @@ public class StudentDaoImpl implements StudentDaoInterface{
 	Connection conn=null;
 	PreparedStatement  stmt=null;
 	ResultSet rs=null;
-
+	private final Logger log = Logger.getLogger(StudentDaoImpl.class);
 	public void addStudent(Student student) throws SQLException {
 		try {
 			Class.forName(JDBC_DRIVER);

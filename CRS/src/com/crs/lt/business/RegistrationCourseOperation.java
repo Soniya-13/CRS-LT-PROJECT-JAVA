@@ -3,6 +3,8 @@ package com.crs.lt.business;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.crs.lt.bean.Course;
 import com.crs.lt.bean.Payment;
 import com.crs.lt.bean.StudentGrade;
@@ -12,7 +14,7 @@ import com.crs.lt.dao.CourseDaoInterface;
 public class RegistrationCourseOperation implements RegistrationCourseInterface{
 
 	CourseDaoInterface courseDaoInteface = new CourseDaoImpl();
-	
+	private final Logger log = Logger.getLogger(RegistrationCourseOperation.class);
 	public void registerCourse() {
 		// TODO Auto-generated method stub
 		

@@ -12,11 +12,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.crs.lt.bean.Course;
 import com.crs.lt.bean.Payment;
 import com.crs.lt.bean.Professor;
 import com.crs.lt.bean.StudentGrade;
 import com.crs.lt.bean.User;
+import com.crs.lt.business.StudentOperation;
 import com.crs.lt.constant.SQLQueriesConstants;
 
 
@@ -33,7 +36,7 @@ public class CourseDaoImpl implements CourseDaoInterface {
 	Connection conn=null;
 	PreparedStatement  stmt=null;
 	ResultSet rs=null;
-	
+	private final Logger log = Logger.getLogger(CourseDaoImpl.class);
 	public void registerCourse() {
 		// TODO Auto-generated method stub
 		

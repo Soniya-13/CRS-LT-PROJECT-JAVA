@@ -63,7 +63,7 @@ public class Application {
 				
 				break;
 			case 2:
-				
+				getProfessoMenu();
 				break;
 				
 			case 3:
@@ -84,22 +84,23 @@ public class Application {
 			CRSCourseMenu studentMenu = new CRSCourseMenu();	
 			studentMenu.courseMenu(studentId);
 		}
-		public static void getProfessoMenu() {
+		public static void getProfessoMenu() throws SQLException {
 			// TODO Auto-generated method stub
-			
+			CRSProfessorMenu professorMenu=new CRSProfessorMenu();
+			professorMenu.professorMenu();
 		}
 		
-		public static void getStudentMenu(int studentId) throws SQLException{
-//			CRSStudentMenu studentMenu = new CRSStudentMenu();	
-//			studentMenu.studentMenu();
+//		public static void getStudentMenu(int studentId) throws SQLException{
+////			CRSStudentMenu studentMenu = new CRSStudentMenu();	
+////			studentMenu.studentMenu();
+////			
+////			CRSStudentMenu studentMenu=new CRSStudentMenu();
+////			studentMenu.studentMenu(studentId);
 //			
-//			CRSStudentMenu studentMenu=new CRSStudentMenu();
-//			studentMenu.studentMenu(studentId);
-			
-			CRSCourseMenu studentMenu = new CRSCourseMenu();	
-			studentMenu.courseMenu(studentId);
-			
-		}
+//			CRSCourseMenu studentMenu = new CRSCourseMenu();	
+//			studentMenu.courseMenu(studentId);
+//			
+//		}
 		
 		
 		public static void getAdminMenu() {

@@ -1,19 +1,42 @@
 package com.crs.lt.business;
 
+import java.sql.SQLException;
 import java.util.List;
 
-import com.crs.lt.bean.Student;
+import org.apache.log4j.Logger;
+
+import com.crs.lt.bean.Course;
+import com.crs.lt.bean.Professor;
+import com.crs.lt.dao.ProfessorDaoImpl;
+import com.crs.lt.dao.ProfessorDaoInterface;
 
 public class ProfessorOperation implements ProfessorInterface{
 
-	public List<Student> viewEnrolledStudents() {
-		// TODO Auto-generated method stub
-		return null;
+	ProfessorDaoInterface professorDao=new ProfessorDaoImpl();
+	private final Logger log = Logger.getLogger(ProfessorOperation.class);
+	@Override
+	public void addProfessor(Professor professor) throws SQLException {
+		professorDao.addProfessor(professor);
 	}
 
-	public void addGrade() {
-		// TODO Auto-generated method stub
-		
+	@Override
+	public List<Course> viewCoursesByProfessor(int professorId) throws SQLException {
+		return professorDao.viewCoursesByProfessor(professorId);
+	}
+
+	@Override
+	public void addrGrade(int studentId, String courdeCode, String grade) throws SQLException {
+		professorDao.addrGrade(studentId, courdeCode, grade);
+	}
+
+	@Override
+	public String getProfessorById(int professorId) throws SQLException {
+		return professorDao.getProfessorById(professorId);
+	}
+
+	@Override
+	public List<String> viewAllProfessors() throws SQLException {
+		return professorDao.viewAllProfessors();
 	}
 
 }

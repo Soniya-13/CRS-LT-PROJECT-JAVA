@@ -2,7 +2,7 @@ package com.crs.lt.bean;
 
 public class Payment {
 private Student studentId;
-private Notification refId;
+private int refId;
 private float amount;
 private String modeOfPayment;
 
@@ -18,10 +18,11 @@ public Student getStudentId() {
 public void setStudentId(Student studentId) {
 	this.studentId = studentId;
 }
-public Notification getRefId() {
+
+public int getRefId() {
 	return refId;
 }
-public void setRefId(Notification refId) {
+public void setRefId(int refId) {
 	this.refId = refId;
 }
 public float getAmount() {
