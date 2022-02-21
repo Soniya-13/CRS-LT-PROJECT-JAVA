@@ -179,7 +179,7 @@ public class CRSApplication {
 			batch=sc.nextInt();
 			sc.nextLine();
 			int newStudentId=studentInterface.register(name, userId, password,  batch, branchName);
-			notificationInterface.sendNotification(NotificationType.REGISTRATION, newStudentId, null,0);
+			//notificationInterface.sendNotification(NotificationType.REGISTRATION, newStudentId, null,0);
 			
 		}
 		catch(StudentNotRegisteredException ex)

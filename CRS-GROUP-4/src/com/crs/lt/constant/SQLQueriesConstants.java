@@ -31,7 +31,7 @@ public class SQLQueriesConstants {
 	public static final String VIEW_AVAILABLE_COURSES=" select * from course where course_code not in  (select course_code  from registered_course where student_id = ?) and seats > 0";
 	public static final String CHECK_COURSE_AVAILABILITY=" select course_code from registered_course where student_id = ? ";
 	public static final String DECREMENT_COURSE_SEATS="update course set seats = seats-1 where course_code = ? ";
-	public static final String ADD_COURSE="insert into registered_course (student_id,course_code) values ( ? , ? )";
+	public static final String ADD_COURSE="insert into registered_course (student_id,course_code,grade) values ( ? , ?, ? )";
 	public static final String DROP_COURSE_QUERY = "delete from registered_course where course_code = ? AND student_id = ?;";
 	public static final String INCREMENT_SEAT_QUERY  = "update course set seats = seats + 1 where  course_code = ?;";
 	public static final String CALCULATE_FEES  = "select sum(course_fee) from course where course_code in (select course_code from registered_course where student_id = ?);";
@@ -40,7 +40,7 @@ public class SQLQueriesConstants {
 	public static final String INSERT_PAYMENT = "insert into payment(student_id,mode_of_payment,reference_id,amount) values(?,?,?,?);";
 	public static final String INSERT_NOTIFICATION = "insert into notification(student_id,type,reference_id) values(?,?,?);";
 	public static final String GET_NOTIFICATION = "select * from notification where reference_id = ?;";
-	public static final String ADD_GRADE="update registered_course set Grade=? where course_code=? and student_id=?";
+	public static final String ADD_GRADE="update registered_course set grade=? where course_code=? and student_id=?";
 	public static final String GET_COURSES="select * from course where professor_id=?";
 	public static final String GET_REGISTRATION_STATUS=" select isRegistered from student where student_id = ? ";
 	public static final String SET_REGISTRATION_STATUS="update student set isRegistered = true  where student_id=?";

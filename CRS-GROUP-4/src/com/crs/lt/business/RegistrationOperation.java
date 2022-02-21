@@ -43,15 +43,12 @@ public class RegistrationOperation implements RegistrationInterface {
        
 		
 
-		if (registrationDaoInterface.numOfRegisteredCourses(studentId) >= 6)
-		{	
-			throw new CourseLimitExceedException(6);
-		}
-		else if (registrationDaoInterface.isRegistered(courseCode, studentId)) 
+		
+		if (registrationDaoInterface.isRegistered(courseCode, studentId)) 
 		{
 			return false;
 		} 
-		else if (!registrationDaoInterface.seatAvailable(courseCode)) 
+		else if(!registrationDaoInterface.seatAvailable(courseCode)) 
 		{
 			throw new SeatNotAvailableException(courseCode);
 		} 

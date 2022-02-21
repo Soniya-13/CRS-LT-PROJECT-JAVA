@@ -96,9 +96,9 @@ public class UserDaoOperation implements UserDaoInterface{
 		{
 			//open db connection
 			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.VERIFY_CREDENTIALS);
-			System.out.println("userId in"+userId);
+			//System.out.println("userId in"+userId);
 			preparedStatement.setInt(1,userId);
-			System.out.println("userId out"+userId);
+			//System.out.println("userId out"+userId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			if(!resultSet.next())

@@ -80,7 +80,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 			stmt = conn.prepareStatement(SQLQueriesConstants.ADD_COURSE);
 			stmt.setInt(1, studentId);
 			stmt.setString(2, courseCode);
-
+			stmt.setString(3,"-");
 			stmt.executeUpdate();
 			
 			stmt = conn.prepareStatement(SQLQueriesConstants.DECREMENT_COURSE_SEATS);
@@ -324,8 +324,8 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 			
 			while(rs.next())
 			{
-				String courseCode = rs.getString("courseCode");
-				String courseName = rs.getString("courseName");
+				String courseCode = rs.getString("course_code");
+				String courseName = rs.getString("course_name");
 				String grade = rs.getString("grade");
 				StudentGrade obj = new StudentGrade(courseCode, courseName,grade);
 				grade_List.add(obj);
@@ -365,7 +365,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 		{
 			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_AVAILABLE_COURSES);
 			stmt.setInt(1, studentId);
-			stmt.setBoolean(2, true);
+			//stmt.setBoolean(2, true);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {

@@ -69,7 +69,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			ResultSet results=statement.executeQuery();
 			while(results.next())
 			{
-				courseList.add(new Course(results.getString("courseCode"),results.getString("courseName"),results.getString("professorId"),results.getInt("seats")));
+				courseList.add(new Course(results.getString("course_code"),results.getString("course_name"),results.getString("professor_id"),results.getInt("seats")));
 			}
 		}
 		catch(SQLException e)
@@ -107,7 +107,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			while(results.next())
 			{
 				//public EnrolledStudent(String courseCode, String courseName, int studentId) 
-				enrolledStudents.add(new EnrolledStudent(results.getString("courseCode"),results.getString("courseName"),results.getInt("studentId")));
+				enrolledStudents.add(new EnrolledStudent(results.getString("course_code"),results.getString("course_name"),results.getInt("student_id")));
 			}
 		}
 		catch(SQLException e)

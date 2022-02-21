@@ -108,8 +108,7 @@ public class StudentCRSMenu {
 			}
 			
 			int count = 0;
-			while(count < 6)
-			{
+			
 				try
 				{
 					List<Course> courseList=viewCourse(studentId);
@@ -134,7 +133,7 @@ public class StudentCRSMenu {
 				{
 					logger.info(e.getMessage());
 				}
-			}
+			
 			
 		    logger.info("Registration Successful");	
 		    is_registered = true;
