@@ -2,7 +2,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if course is already registered by student
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class CourseAlreadyRegisteredException extends Exception{

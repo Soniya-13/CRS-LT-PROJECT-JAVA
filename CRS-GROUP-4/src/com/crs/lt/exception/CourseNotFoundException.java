@@ -3,7 +3,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if course is available in catalog
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class CourseNotFoundException extends Exception{

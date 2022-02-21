@@ -4,7 +4,7 @@ import com.crs.lt.exception.UserNotFoundException;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Interface for User Dao Operations
  *
  */
@@ -17,7 +17,7 @@ public interface UserDaoInterface {
 	 * @return Verify credentials operation status
 	 * @throws UserNotFoundException
 	 */
-	public boolean verifyCredentials(String userId,String password) throws UserNotFoundException;
+	public boolean verifyCredentials(int userId,String password) throws UserNotFoundException;
 	
 	/**
 	 * Method to update password of user in DataBase
@@ -32,7 +32,7 @@ public interface UserDaoInterface {
 	 * @param userId
 	 * @return Role
 	 */
-	public String getRole(String userId);
+	public String getRole(int userId);
 	
 	
 	/**

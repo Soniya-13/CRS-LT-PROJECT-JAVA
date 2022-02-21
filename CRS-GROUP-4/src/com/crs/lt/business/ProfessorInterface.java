@@ -18,10 +18,10 @@ public interface ProfessorInterface {
 	public boolean addGrade(int studentId,String courseCode,String grade) throws GradeNotAddedException;
 	
 	
-	public List<EnrolledStudent> viewEnrolledStudents(String profId) throws SQLException;
+	public List<EnrolledStudent> viewEnrolledStudents(int profId) throws SQLException;
 	
 	
-	public List<Course> getCourses(String profId);
+	public List<Course> getCourses(int userId);
 	
 	public String getProfessorById(String profId);
 }

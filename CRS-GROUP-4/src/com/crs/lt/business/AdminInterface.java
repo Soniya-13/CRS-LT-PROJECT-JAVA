@@ -38,7 +38,7 @@ public interface AdminInterface {
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserIdAlreadyInUseException;	
 	
 	
-	public void assignCourse(String courseCode, String professorId) throws CourseNotFoundException, UserNotFoundException;
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException;
 	
 	public List<Course> viewCourses(int catalogId);
 	

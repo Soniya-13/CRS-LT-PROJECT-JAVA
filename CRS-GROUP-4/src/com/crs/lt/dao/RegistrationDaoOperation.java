@@ -27,7 +27,7 @@ import com.crs.lt.utils.DBUtils;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Class to implement Registration Dao Operations
  * This class communicates with the database.
  *
@@ -35,7 +35,7 @@ import com.crs.lt.utils.DBUtils;
 public class RegistrationDaoOperation implements RegistrationDaoInterface{
     
 	
-	private static volatile RegistrationDaoOperation instance=null;
+	private static  RegistrationDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(RegistrationDaoOperation.class);
 	private PreparedStatement stmt = null;
 	
@@ -369,8 +369,8 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				availableCourseList.add(new Course(rs.getString("courseCode"), rs.getString("courseName"),
-						rs.getString("professorId"), rs.getInt("seats")));
+				availableCourseList.add(new Course(rs.getString("course_code"), rs.getString("course_name"),
+						rs.getString("professor_id"), rs.getInt("seats")));
 
 			}
 			
@@ -413,8 +413,8 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				registeredCourseList.add(new Course(rs.getString("courseCode"), rs.getString("courseName"),
-						rs.getString("professorId"), rs.getInt("seats")));
+				registeredCourseList.add(new Course(rs.getString("course_code"), rs.getString("course_name"),
+						rs.getString("professor_id"), rs.getInt("seats")));
 
 			}
 		} 

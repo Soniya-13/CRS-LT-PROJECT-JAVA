@@ -129,7 +129,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			while(resultSet.next()) {
 				
 				Student user = new Student();
-				user.setUserId(resultSet.getString(1));
+				user.setUserId(resultSet.getInt(1));
 				user.setName(resultSet.getString(2));
 				user.setPassword(resultSet.getString(3));
 				user.setRole(Role.stringToName(resultSet.getString(4)));
@@ -188,7 +188,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			String sql = SQLQueriesConstants.ADD_USER_QUERY;
 			statement = connection.prepareStatement(sql);
 			
-			statement.setString(1, user.getUserId());
+			statement.setInt(1, user.getUserId());
 			statement.setString(2, user.getName());
 			statement.setString(3, user.getPassword());
 			statement.setString(4, user.getRole().toString());
@@ -239,7 +239,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			String sql = SQLQueriesConstants.ADD_PROFESSOR_QUERY;
 			statement = connection.prepareStatement(sql);
 			
-			statement.setString(1, professor.getUserId());
+			statement.setInt(1, professor.getUserId());
 			statement.setString(2, professor.getDepartment());
 			statement.setString(3, professor.getDesignation());
 			int row = statement.executeUpdate();
@@ -263,14 +263,14 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	
 
 	@Override
-	public void assignCourse(String courseCode, String professorId) throws CourseNotFoundException, UserNotFoundException{
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException{
 		
 		statement = null;
 		try {
 			String sql = SQLQueriesConstants.ASSIGN_COURSE_QUERY;
 			statement = connection.prepareStatement(sql);
 			
-			statement.setString(1,professorId);
+			statement.setInt(1,professorId);
 			statement.setString(2,courseCode);
 			int row = statement.executeUpdate();
 			
@@ -340,7 +340,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			while(resultSet.next()) {
 				
 				Professor professor = new Professor();
-				professor.setUserId(resultSet.getString(1));
+				professor.setUserId(resultSet.getInt(1));
 				professor.setName(resultSet.getString(2));
 				professor.setDepartment(resultSet.getString(4));
 				professor.setDesignation(resultSet.getString(5));

@@ -10,7 +10,7 @@ import com.crs.lt.exception.StudentNotRegisteredException;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Interface for Student Operations
  *
  */
@@ -30,7 +30,7 @@ public interface StudentDaoInterface {
 	 * @param userId
 	 * @return Student Id
 	 */
-	public int getStudentId(String userId);
+	public int getStudentId(int userId);
 	
 	/**
 	 * Method to check if Student is approved

@@ -5,7 +5,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception course is deleted from catalog
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class CourseNotDeletedException extends Exception{

@@ -60,7 +60,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	
 
 	@Override
-	public List<EnrolledStudent> viewEnrolledStudents(String profId) throws SQLException{
+	public List<EnrolledStudent> viewEnrolledStudents(int profId) throws SQLException{
 		List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 		try
 		{
@@ -76,7 +76,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	
 	
 	@Override
-	public List<Course> getCourses(String profId) {
+	public List<Course> getCourses(int profId) {
 		//call the DAO class
 		//get the courses for the professor
 		List<Course> coursesOffered=new ArrayList<Course>();

@@ -5,7 +5,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception thrown when student is not found for approval
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class StudentNotFoundForApprovalException extends Exception {

@@ -125,7 +125,7 @@ public class AdminOperation implements AdminInterface{
 
 	
 	@Override
-	public void assignCourse(String courseCode, String professorId) throws CourseNotFoundException, UserNotFoundException{
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException{
 		
 		try {
 			adminDaoOperation.assignCourse(courseCode, professorId);

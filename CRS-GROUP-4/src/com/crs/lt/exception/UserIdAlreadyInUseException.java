@@ -4,22 +4,22 @@
 package com.crs.lt.exception;
 
 /**
- * @author Rag_Patel
+ * @author Group-4
  *
  */
 public class UserIdAlreadyInUseException extends Exception{
-	private String userId;
+	private int userId;
 	
 	
-	public UserIdAlreadyInUseException(String userId) {
+	public UserIdAlreadyInUseException(int userId) {
 		this.userId = userId;
 	}
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setProfessorId(String userId) {
+	public void setProfessorId(int userId) {
 		this.userId = userId;
 	}
 	

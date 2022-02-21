@@ -17,7 +17,7 @@ import com.crs.lt.utils.DBUtils;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Class to implement Notification Dao Operations
  * Used for adding the notification to the database
  *

@@ -2,7 +2,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if student is not registered 
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class StudentNotRegisteredException extends Exception{

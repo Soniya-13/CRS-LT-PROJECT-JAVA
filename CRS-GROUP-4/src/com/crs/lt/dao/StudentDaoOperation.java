@@ -20,13 +20,13 @@ import com.crs.lt.utils.DBUtils;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Class to implement Student Dao Operations
  *
  */
 public class StudentDaoOperation implements StudentDaoInterface {
 	
-	private static volatile StudentDaoOperation instance=null;
+	private static  StudentDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(StudentOperation.class);
 	
 	/**
@@ -67,7 +67,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		{
 			
 			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
-			preparedStatement.setString(1, student.getUserId());
+			preparedStatement.setInt(1, student.getUserId());
 			preparedStatement.setString(2, student.getName());
 			preparedStatement.setString(3, student.getPassword());
 			preparedStatement.setString(4, student.getRole().toString());
@@ -78,12 +78,14 @@ public class StudentDaoOperation implements StudentDaoInterface {
 				
 				//"insert into student (userId,branchName,batch,isApproved) values (?,?,?,?)";
 				PreparedStatement preparedStatementStudent;
+				System.out.println("student in dao  "+student.toString());
 				preparedStatementStudent=connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT,Statement.RETURN_GENERATED_KEYS);
-				preparedStatementStudent.setString(1,student.getUserId());
+				preparedStatementStudent.setInt(1,student.getUserId());
 				preparedStatementStudent.setString(2, student.getBranchName());
 				preparedStatementStudent.setInt(3, student.getBatch());
 				preparedStatementStudent.setBoolean(4, false);
 				preparedStatementStudent.executeUpdate();
+				System.out.println("student in dao2  "+student.toString());
 				ResultSet results=preparedStatementStudent.getGeneratedKeys();
 				if(results.next())
 					studentId=results.getInt(1);
@@ -113,16 +115,16 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	 * @return Student Id
 	 */
 	@Override
-	public int getStudentId(String userId) {
+	public int getStudentId(int userId) {
 		Connection connection=DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_STUDENT_ID);
-			statement.setString(1, userId);
+			statement.setInt(1, userId);
 			ResultSet rs = statement.executeQuery();
 			
 			if(rs.next())
 			{
-				return rs.getInt("studentId");
+				return rs.getInt("student_id");
 			}
 				
 		}
@@ -149,7 +151,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			
 			if(rs.next())
 			{
-				return rs.getBoolean("isApproved");
+				return rs.getBoolean("is_approved");
 			}
 				
 		}

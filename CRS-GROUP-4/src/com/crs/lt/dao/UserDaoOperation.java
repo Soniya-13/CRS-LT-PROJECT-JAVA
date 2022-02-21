@@ -13,11 +13,11 @@ import com.crs.lt.utils.DBUtils;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Class to implement User Dao Operations
  */
 public class UserDaoOperation implements UserDaoInterface{
-	private static volatile UserDaoOperation instance=null;
+	private static  UserDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
 	
 	/**
@@ -90,13 +90,15 @@ public class UserDaoOperation implements UserDaoInterface{
 	 * @throws UserNotFoundException
 	 */
 	@Override
-	public boolean verifyCredentials(String userId, String password) throws UserNotFoundException {
+	public boolean verifyCredentials(int userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
 		try
 		{
 			//open db connection
 			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.VERIFY_CREDENTIALS);
-			preparedStatement.setString(1,userId);
+			System.out.println("userId in"+userId);
+			preparedStatement.setInt(1,userId);
+			System.out.println("userId out"+userId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			if(!resultSet.next())
@@ -144,11 +146,11 @@ public class UserDaoOperation implements UserDaoInterface{
 	 * @return Role
 	 */
 	@Override
-	public String getRole(String userId) {
+	public String getRole(int userId) {
 		Connection connection=DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ROLE);
-			statement.setString(1, userId);
+			statement.setInt(1, userId);
 			ResultSet rs = statement.executeQuery();
 			
 			if(rs.next())

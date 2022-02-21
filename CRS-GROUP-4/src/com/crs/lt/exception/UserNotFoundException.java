@@ -5,18 +5,15 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if user exists 
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class UserNotFoundException extends Exception {
 
-	private String userId;
+	private int userId;
 
-	/***
-	 * Getter function for UserId
-	 * @param userId
-	 */
-	public UserNotFoundException(String userId) {
+	
+	public UserNotFoundException(int userId) {
 		this.userId = userId;
 	}
 

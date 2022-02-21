@@ -18,7 +18,7 @@ import com.crs.lt.utils.DBUtils;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Class to implement Professor Dao Operations
  *
  */
@@ -58,13 +58,13 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	 * @return get the courses offered by the professor.
 	 */
 	@Override
-	public List<Course> getCoursesByProfessor(String profId) {
+	public List<Course> getCoursesByProfessor(int profId) {
 		Connection connection=DBUtils.getConnection();
 		List<Course> courseList=new ArrayList<Course>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_COURSES);
 			
-			statement.setString(1, profId);
+			statement.setInt(1, profId);
 			
 			ResultSet results=statement.executeQuery();
 			while(results.next())
@@ -96,12 +96,12 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	 * @return: return the enrolled students for the corresponding professor and course code.
 	 */
 	@Override
-	public List<EnrolledStudent> getEnrolledStudents(String profId) {
+	public List<EnrolledStudent> getEnrolledStudents(int profId) {
 		Connection connection=DBUtils.getConnection();
 		List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ENROLLED_STUDENTS);
-			statement.setString(1, profId);
+			statement.setInt(1, profId);
 			
 			ResultSet results = statement.executeQuery();
 			while(results.next())

@@ -40,7 +40,7 @@ public class UserOperation implements UserInterface {
 	
 	
 	@Override
-	public boolean verifyCredentials(String userID, String password) throws UserNotFoundException {
+	public boolean verifyCredentials(int userID, String password) throws UserNotFoundException {
 		//DAO class
 		try
 		{
@@ -54,7 +54,7 @@ public class UserOperation implements UserInterface {
 	
 	
 	@Override
-	public String getRole(String userId) {
+	public String getRole(int userId) {
 		return userDaoInterface.getRole(userId);
 	}
 

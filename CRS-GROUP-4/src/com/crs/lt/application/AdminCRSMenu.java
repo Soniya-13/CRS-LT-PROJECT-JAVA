@@ -112,7 +112,7 @@ public class AdminCRSMenu {
 		String courseCode = scanner.next();
 		
 		logger.info("Enter Professor Id:");
-		String userId = scanner.next();
+		int userId = scanner.nextInt();
 		
 		try {
 			
@@ -144,7 +144,7 @@ public class AdminCRSMenu {
 		professor.setDesignation(designation);
 		
 		logger.info("Enter User Id:");
-		String userId = scanner.next();
+		int userId = scanner.nextInt();
 		professor.setUserId(userId);
 		
 		logger.info("Enter Password:");

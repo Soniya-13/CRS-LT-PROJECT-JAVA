@@ -8,7 +8,7 @@ import com.crs.lt.constant.NotificationType;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Interface for Notification Dao Operations
  * Used for adding the notification to the database
  *

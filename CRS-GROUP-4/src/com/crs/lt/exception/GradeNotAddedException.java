@@ -2,7 +2,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if student has been alloted grade by professor
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class GradeNotAddedException extends Exception{

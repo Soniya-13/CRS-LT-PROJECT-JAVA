@@ -43,7 +43,7 @@ public interface AdminDaoInterface {
 	public void addUser(User user) throws UserNotAddedException, UserIdAlreadyInUseException;
 	
 	
-	public void assignCourse(String courseCode, String professorId) throws CourseNotFoundException, UserNotFoundException;
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException;
 	
 	
 	public List<Course> viewCourses(int catalogId);

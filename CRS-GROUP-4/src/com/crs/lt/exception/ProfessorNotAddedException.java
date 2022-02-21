@@ -2,13 +2,13 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if the professor is not added successfully by admin
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class ProfessorNotAddedException extends Exception{
-	private String professorId;
+	private int professorId;
 	
-	public ProfessorNotAddedException(String professorId) {
+	public ProfessorNotAddedException(int professorId) {
 		this.professorId = professorId;
 	}
 	
@@ -16,7 +16,7 @@ public class ProfessorNotAddedException extends Exception{
 	 * Getter function for professorId
 	 * @return
 	 */
-	public String getUserId() {
+	public int getUserId() {
 		return this.professorId;
 	}
 	

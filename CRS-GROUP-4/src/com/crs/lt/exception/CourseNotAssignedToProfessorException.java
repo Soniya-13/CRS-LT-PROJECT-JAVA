@@ -5,7 +5,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception course is  not assigned to professor
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class CourseNotAssignedToProfessorException extends Exception{

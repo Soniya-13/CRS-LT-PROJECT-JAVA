@@ -10,7 +10,7 @@ import com.crs.lt.constant.Role;
  *
  */
 public abstract class User {
-	private String userId;
+	private int userId;
 	private String name;
 	private Role role;
 	private String password;
@@ -18,7 +18,7 @@ public abstract class User {
 	
 
 	
-	public User(String userId, String name, Role role, String password) {
+	public User(int userId, String name, Role role, String password) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -33,12 +33,12 @@ public abstract class User {
 	}
 	
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 	
 	
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	

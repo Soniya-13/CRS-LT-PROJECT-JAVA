@@ -85,12 +85,13 @@ public class CRSApplication {
 
 		Scanner sc=new Scanner(System.in);
 
-		String userId,password;
+		int userId;
+		String password;
 		try
 		{
 			logger.info("Login");
-			logger.info("Email:");
-			userId=sc.next();
+			logger.info("user Id:");
+			userId=sc.nextInt();
 			logger.info("Password:");
 			password=sc.next();
 			loggedin = userInterface.verifyCredentials(userId, password);
@@ -156,17 +157,18 @@ public class CRSApplication {
 	{
 		Scanner sc=new Scanner(System.in);
 
-		String userId,name,password,address,country,branchName;
-		//Gender gender;
-		int genderV, batch;
+		int userId;
+		String name,password,branchName;
+		
+		int  batch;
 		try
 		{
 			
 			logger.info("Student Registration-----");
 			logger.info("Name:");
 			name=sc.nextLine();
-			logger.info("Email:");
-			userId=sc.next();
+			logger.info("userId:");
+			userId=sc.nextInt();
 			logger.info("Password:");
 			password=sc.next();
 			

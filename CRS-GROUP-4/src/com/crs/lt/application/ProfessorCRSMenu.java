@@ -25,7 +25,7 @@ public class ProfessorCRSMenu {
 	private static Logger logger = Logger.getLogger(ProfessorCRSMenu.class);
 	ProfessorInterface professorInterface=ProfessorOperation.getInstance();
 
-	public void createMenu(String profId)
+	public void createMenu(int userId)
 	{
 		
 		Scanner sc=new Scanner(System.in);
@@ -47,16 +47,16 @@ public class ProfessorCRSMenu {
 			{
 				case 1:
 				
-					getCourses(profId);
+					getCourses(userId);
 					break;
 				case 2:
 					
-					viewEnrolledStudents(profId);
+					viewEnrolledStudents(userId);
 					break;
 					
 				case 3:
 					
-					addGrade(profId);
+					addGrade(userId);
 					break;
 				case 4:
 				
@@ -71,7 +71,7 @@ public class ProfessorCRSMenu {
 	}
 	
 
-	public void viewEnrolledStudents(String profId)
+	public void viewEnrolledStudents(int profId)
 	{
 		List<Course> coursesEnrolled=professorInterface.getCourses(profId);
 		logger.info(String.format("%20s %20s %20s","COURSE CODE","COURSE CODE","Students  enrolled" ));
@@ -92,11 +92,11 @@ public class ProfessorCRSMenu {
 	}
 
 
-	public void getCourses(String profId)
+	public void getCourses(int userId)
 	{
 		try
 		{
-			List<Course> coursesEnrolled=professorInterface.getCourses(profId);
+			List<Course> coursesEnrolled=professorInterface.getCourses(userId);
 			logger.info(String.format("%20s %20s %20s","COURSE CODE","COURSE NAME","No. of Students  enrolled" ));
 			for(Course obj: coursesEnrolled)
 			{
@@ -110,7 +110,7 @@ public class ProfessorCRSMenu {
 	}
 	
 
-	public void addGrade(String profId)
+	public void addGrade(int profId)
 	{	
 		Scanner sc=new Scanner(System.in);
 		

@@ -13,7 +13,7 @@ import com.crs.lt.constant.ModeOfPayment;
 import com.crs.lt.exception.CourseNotFoundException;
 
 /**
- * @author JEDI-03
+ * @author Group-4
  * Interface for Registration DAO Operation
  *
  */

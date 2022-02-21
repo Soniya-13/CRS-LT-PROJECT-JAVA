@@ -2,7 +2,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if user is approved by administration
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class UserNotApprovedException extends Exception{

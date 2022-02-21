@@ -10,9 +10,9 @@ import com.crs.lt.exception.StudentNotRegisteredException;
 public interface StudentInterface {
 	
 	
-	public int register(String name,String userID,String password,int batch,String branch) throws StudentNotRegisteredException; 
+	public int register(String name,int userID,String password,int batch,String branch) throws StudentNotRegisteredException; 
 	
-	public int getStudentId(String userId);
+	public int getStudentId(int userId);
 	
 	
     public boolean isApproved(int studentId);

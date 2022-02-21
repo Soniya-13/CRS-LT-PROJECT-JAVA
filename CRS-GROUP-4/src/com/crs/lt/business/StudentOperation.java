@@ -39,7 +39,7 @@ public class StudentOperation implements StudentInterface {
 	
 	
 	@Override
-	public int register(String name,String userId,String password,int batch,String branch) throws StudentNotRegisteredException{
+	public int register(String name,int userId,String password,int batch,String branch) throws StudentNotRegisteredException{
 		int studentId;
 		try
 		{
@@ -57,7 +57,7 @@ public class StudentOperation implements StudentInterface {
 	
 	
 	@Override
-	public int getStudentId(String userId) {
+	public int getStudentId(int userId) {
 		return studentDaoInterface.getStudentId(userId);
 	
 	}

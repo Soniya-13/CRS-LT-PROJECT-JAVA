@@ -8,7 +8,7 @@ import com.crs.lt.bean.Student;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Interface for Admin Dao Operations
  * 
  */
@@ -19,7 +19,7 @@ public interface ProfessorDaoInterface {
 	 * @param userId, prof id of the professor
 	 * @return get the courses offered by the professor.
 	 */
-	public List<Course> getCoursesByProfessor(String userId);
+	public List<Course> getCoursesByProfessor(int profId);
 	
 	
 	/**
@@ -28,7 +28,7 @@ public interface ProfessorDaoInterface {
 	 * @param: courseCode: course code of the professor
 	 * @return: return the enrolled students for the corresponding professor and course code.
 	 */
-	public List<EnrolledStudent> getEnrolledStudents(String profId);
+	public List<EnrolledStudent> getEnrolledStudents(int profId);
 	
 	/**
 	 * Method to Grade a student using SQL Commands

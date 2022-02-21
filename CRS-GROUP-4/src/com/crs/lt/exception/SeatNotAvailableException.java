@@ -2,7 +2,7 @@ package com.crs.lt.exception;
 
 /**
  * Exception to check if seats are available for course registration
- * @author JEDI-03
+ * @author Group-4
  *
  */
 public class SeatNotAvailableException extends Exception{
