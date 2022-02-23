@@ -15,7 +15,7 @@ import com.lt.constant.SQLQueriesConstants;
 import com.lt.dao.ProfessorDaoInterface;
 import com.lt.dao.ProfessorDaoOperation;
 import com.lt.exception.GradeNotAddedException;
-import com.lt.utils.DBUtils;
+
 
 /**
  * 
@@ -76,7 +76,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	
 	
 	@Override
-	public List<Course> getCourses(int profId) {
+	public List<Course> getCourses(int profId) throws Exception {
 		//call the DAO class
 		//get the courses for the professor
 		List<Course> coursesOffered=new ArrayList<Course>();
@@ -93,7 +93,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	
 	
 	@Override
-	public String getProfessorById(String profId)
+	public String getProfessorById(String profId) throws SQLException
 	{
 		return professorDAOInterface.getProfessorById(profId);
 	}

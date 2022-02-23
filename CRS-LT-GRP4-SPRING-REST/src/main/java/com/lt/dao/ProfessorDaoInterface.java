@@ -1,5 +1,6 @@
 package com.lt.dao;
 
+import java.sql.SQLException;
 import java.util.*;
 
 import com.lt.bean.Course;
@@ -19,7 +20,7 @@ public interface ProfessorDaoInterface {
 	 * @param userId, prof id of the professor
 	 * @return get the courses offered by the professor.
 	 */
-	public List<Course> getCoursesByProfessor(int profId);
+	public List<Course> getCoursesByProfessor(int profId) throws SQLException;
 	
 	
 	/**
@@ -28,7 +29,7 @@ public interface ProfessorDaoInterface {
 	 * @param: courseCode: course code of the professor
 	 * @return: return the enrolled students for the corresponding professor and course code.
 	 */
-	public List<EnrolledStudent> getEnrolledStudents(int profId);
+	public List<EnrolledStudent> getEnrolledStudents(int profId) throws SQLException;
 	
 	/**
 	 * Method to Grade a student using SQL Commands
@@ -36,13 +37,14 @@ public interface ProfessorDaoInterface {
 	 * @param: courseCode: course code for the corresponding 
 	 * @return: returns the status after adding the grade
 	 */
-	public Boolean addGrade(int studentId,String courseCode,String grade);
+	public Boolean addGrade(int studentId,String courseCode,String grade) throws SQLException;
 
 
 	/**
 	 * Method to Get professor name by id
 	 * @param profId
 	 * @return Professor Id in string
+	 * @throws SQLException 
 	 */
-	public String getProfessorById(String profId);
+	public String getProfessorById(String profId) throws SQLException;
 }

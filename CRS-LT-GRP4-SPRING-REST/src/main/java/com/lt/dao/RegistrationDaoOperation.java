@@ -11,19 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.crs.lt.bean.Course;
-import com.crs.lt.bean.Notification;
-import com.crs.lt.bean.StudentGrade;
-import com.crs.lt.constant.Grade;
-import com.crs.lt.constant.ModeOfPayment;
-import com.crs.lt.constant.NotificationType;
-import com.crs.lt.constant.SQLQueriesConstants;
-import com.crs.lt.exception.CourseLimitExceedException;
-import com.crs.lt.exception.CourseNotFoundException;
-import com.crs.lt.exception.SeatNotAvailableException;
-import com.crs.lt.utils.DBUtils;
+import com.lt.bean.Course;
+import com.lt.bean.Notification;
+import com.lt.bean.StudentGrade;
+import com.lt.configuration.ConfigurationJDBC;
+import com.lt.constant.Grade;
+import com.lt.constant.ModeOfPayment;
+import com.lt.constant.NotificationType;
+import com.lt.constant.SQLQueriesConstants;
+import com.lt.exception.CourseLimitExceedException;
+import com.lt.exception.CourseNotFoundException;
+import com.lt.exception.SeatNotAvailableException;
+
 
 
 /**
@@ -33,8 +35,10 @@ import com.crs.lt.utils.DBUtils;
  * This class communicates with the database.
  *
  */
+
 public class RegistrationDaoOperation implements RegistrationDaoInterface{
-    
+   @Autowired
+   private ConfigurationJDBC configurationJdbc;
 	
 	private static  RegistrationDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(RegistrationDaoOperation.class);
@@ -73,7 +77,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public boolean addCourse(String courseCode, int studentId) throws SQLException{
 		
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		
 
 		try 
@@ -112,7 +116,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public int numOfRegisteredCourses(int studentId) throws SQLException{
 		
-		Connection conn = DBUtils.getConnection();
+		Connection conn =configurationJdbc.dataSource().getConnection();
 		
 		int count = 0;
 		try {
@@ -156,7 +160,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public boolean seatAvailable(String courseCode) throws SQLException {
 
-		Connection conn = DBUtils.getConnection();
+		Connection conn =configurationJdbc.dataSource().getConnection();
 		try 
 		{
 			stmt = conn.prepareStatement(SQLQueriesConstants.GET_SEATS);
@@ -193,7 +197,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public boolean isRegistered(String courseCode, int studentId) throws SQLException{
 		
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		
 		boolean check = false;
 		try
@@ -234,7 +238,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public boolean dropCourse(String courseCode, int studentId) throws SQLException {
 	
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		
 		
 			try
@@ -278,7 +282,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public double calculateFee(int studentId) throws SQLException
 	{
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		double fee = 0;
 		try
 		{
@@ -315,7 +319,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public List<StudentGrade> viewGradeCard(int studentId) throws SQLException {
 		
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		List<StudentGrade> grade_List = new ArrayList<>();
 		try
 		{
@@ -360,7 +364,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	public List<Course> viewCourses(int studentId) throws SQLException {
 		
 		List<Course> availableCourseList = new ArrayList<>();
-		Connection conn = DBUtils.getConnection();
+		Connection conn =configurationJdbc.dataSource().getConnection();
 		
 		try 
 		{
@@ -404,7 +408,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public List<Course> viewRegisteredCourses(int studentId) throws SQLException {
 
-		Connection conn = DBUtils.getConnection();
+		Connection conn =configurationJdbc.dataSource().getConnection();
 		List<Course> registeredCourseList = new ArrayList<>();
 		try 
 		{
@@ -442,7 +446,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public boolean getRegistrationStatus(int studentId) throws SQLException
 	{
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		boolean status = false;
 		try 
 		{
@@ -474,7 +478,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface{
 	@Override
 	public void setRegistrationStatus(int studentId) throws SQLException
 	{
-		Connection conn = DBUtils.getConnection();
+		Connection conn = configurationJdbc.dataSource().getConnection();
 		try 
 		{
 			stmt = conn.prepareStatement(SQLQueriesConstants.SET_REGISTRATION_STATUS);

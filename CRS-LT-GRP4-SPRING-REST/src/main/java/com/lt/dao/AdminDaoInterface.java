@@ -3,6 +3,7 @@
  */
 package com.lt.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.lt.bean.Course;
@@ -24,28 +25,24 @@ import com.lt.exception.UserNotFoundException;
  *
  */
 public interface AdminDaoInterface {
-	
-	
-	public void deleteCourse(String courseCode) throws CourseNotFoundException, CourseNotDeletedException;
 
-	
-	public void addCourse(Course course) throws CourseFoundException;
-	
-	public List<Student> viewPendingAdmissions();
-	
-	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException;
-	
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserIdAlreadyInUseException;
-	
-	
-	public void addUser(User user) throws UserNotAddedException, UserIdAlreadyInUseException;
-	
-	
-	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException;
-	
-	
-	public List<Course> viewCourses(int catalogId);
-	
-	
-	public List<Professor> viewProfessors();
+	public void deleteCourse(String courseCode) throws CourseNotFoundException, CourseNotDeletedException, SQLException;
+
+	public void addCourse(Course course) throws CourseFoundException, SQLException;
+
+	public List<Student> viewPendingAdmissions() throws SQLException;
+
+	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException, SQLException;
+
+	public void addProfessor(Professor professor)
+			throws ProfessorNotAddedException, UserIdAlreadyInUseException, SQLException;
+
+	public void addUser(User user) throws UserNotAddedException, UserIdAlreadyInUseException, SQLException;
+
+	public void assignCourse(String courseCode, int professorId)
+			throws CourseNotFoundException, UserNotFoundException, SQLException;
+
+	public List<Course> viewCourses(int catalogId) throws SQLException;
+
+	public List<Professor> viewProfessors() throws SQLException;
 }

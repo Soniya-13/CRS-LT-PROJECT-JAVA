@@ -1,5 +1,9 @@
 package com.lt.dao;
 
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Repository;
+
 import com.lt.exception.UserNotFoundException;
 
 /**
@@ -8,6 +12,7 @@ import com.lt.exception.UserNotFoundException;
  * Interface for User Dao Operations
  *
  */
+@Repository
 public interface UserDaoInterface {
 	
 	/**
@@ -16,8 +21,9 @@ public interface UserDaoInterface {
 	 * @param password
 	 * @return Verify credentials operation status
 	 * @throws UserNotFoundException
+	 * @throws SQLException 
 	 */
-	public boolean verifyCredentials(int userId,String password) throws UserNotFoundException;
+	public boolean verifyCredentials(int userId,String password) throws UserNotFoundException, SQLException;
 	
 	/**
 	 * Method to update password of user in DataBase
@@ -31,8 +37,9 @@ public interface UserDaoInterface {
 	 * Method to get Role of User from DataBase
 	 * @param userId
 	 * @return Role
+	 * @throws SQLException 
 	 */
-	public String getRole(int userId);
+	public String getRole(int userId) throws SQLException;
 	
 	
 	/**
@@ -40,6 +47,7 @@ public interface UserDaoInterface {
 	 * @param userID
 	 * @param newPassword
 	 * @return Update Password operation Status
+	 * @throws SQLException 
 	 */
-	public boolean updatePassword(String userID,String newPassword);
+	public boolean updatePassword(String userID,String newPassword) throws SQLException;
 }

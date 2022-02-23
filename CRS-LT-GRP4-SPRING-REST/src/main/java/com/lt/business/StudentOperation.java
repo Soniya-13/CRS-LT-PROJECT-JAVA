@@ -3,7 +3,10 @@ package com.lt.business;
 
 
 
+import java.sql.SQLException;
+
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.lt.bean.Student;
 import com.lt.constant.Role;
@@ -17,10 +20,11 @@ import com.lt.restController.CRSApplication;
  * @author Group-4
  *
  */
+@Service
 public class StudentOperation implements StudentInterface {
 	
 	private static StudentOperation instance=null;
-	private static Logger logger = Logger.getLogger(CRSApplication.class);
+
 	StudentDaoInterface studentDaoInterface=StudentDaoOperation.getInstance();
 
 	private StudentOperation()
@@ -42,7 +46,7 @@ public class StudentOperation implements StudentInterface {
 	
 	
 	@Override
-	public int register(String name,int userId,String password,int batch,String branch) throws StudentNotRegisteredException{
+	public int register(String name,int userId,String password,int batch,String branch) throws StudentNotRegisteredException, SQLException{
 		int studentId;
 		try
 		{
@@ -60,14 +64,14 @@ public class StudentOperation implements StudentInterface {
 	
 	
 	@Override
-	public int getStudentId(int userId) {
+	public int getStudentId(int userId) throws SQLException {
 		return studentDaoInterface.getStudentId(userId);
 	
 	}
 	
 	
 	@Override
-	public boolean isApproved(int studentId) {
+	public boolean isApproved(int studentId) throws SQLException {
 		return studentDaoInterface.isApproved(studentId);
 	}
 

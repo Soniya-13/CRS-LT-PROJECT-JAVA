@@ -7,14 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.crs.lt.bean.Course;
-import com.crs.lt.bean.EnrolledStudent;
-import com.crs.lt.bean.Student;
-import com.crs.lt.business.StudentOperation;
-import com.crs.lt.constant.SQLQueriesConstants;
-import com.crs.lt.utils.DBUtils;
+import com.lt.bean.Course;
+import com.lt.bean.EnrolledStudent;
+import com.lt.bean.Student;
+import com.lt.business.StudentOperation;
+import com.lt.configuration.ConfigurationJDBC;
+import com.lt.constant.SQLQueriesConstants;
+
 
 /**
  * 
@@ -23,10 +26,11 @@ import com.crs.lt.utils.DBUtils;
  *
  */
 public class ProfessorDaoOperation implements ProfessorDaoInterface {
-
+	@Autowired
+	   private ConfigurationJDBC configurationJdbc;
 	private static ProfessorDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
-	
+	DriverManagerDataSource driverManager ;
 	/**
 	 * Default Constructor
 	 */
@@ -56,10 +60,11 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	 * Method to get Courses by Professor Id using SQL Commands
 	 * @param userId, prof id of the professor
 	 * @return get the courses offered by the professor.
+	 * @throws SQLException 
 	 */
 	@Override
-	public List<Course> getCoursesByProfessor(int profId) {
-		Connection connection=DBUtils.getConnection();
+	public List<Course> getCoursesByProfessor(int profId) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		List<Course> courseList=new ArrayList<Course>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_COURSES);
@@ -94,10 +99,11 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	 * @param: profId: professor id 
 	 * @param: courseCode: course code of the professor
 	 * @return: return the enrolled students for the corresponding professor and course code.
+	 * @throws SQLException 
 	 */
 	@Override
-	public List<EnrolledStudent> getEnrolledStudents(int profId) {
-		Connection connection=DBUtils.getConnection();
+	public List<EnrolledStudent> getEnrolledStudents(int profId) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ENROLLED_STUDENTS);
@@ -131,9 +137,10 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	 * @param: profId: professor id 
 	 * @param: courseCode: course code for the corresponding 
 	 * @return: returns the status after adding the grade
+	 * @throws SQLException 
 	 */
-	public Boolean addGrade(int studentId,String courseCode,String grade) {
-		Connection connection=DBUtils.getConnection();
+	public Boolean addGrade(int studentId,String courseCode,String grade) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.ADD_GRADE);
 			
@@ -169,12 +176,13 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	 * Method to Get professor name by id
 	 * @param profId
 	 * @return Professor Id in string
+	 * @throws SQLException 
 	 */
 	@Override
-	public String getProfessorById(String profId)
+	public String getProfessorById(String profId) throws SQLException
 	{
 		String prof_Name = null;
-		Connection connection=DBUtils.getConnection();
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try 
 		{
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_PROF_NAME);

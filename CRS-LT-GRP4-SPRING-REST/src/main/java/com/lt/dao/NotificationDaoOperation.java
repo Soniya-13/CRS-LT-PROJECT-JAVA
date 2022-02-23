@@ -7,13 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lt.business.NotificationOperation;
+import com.lt.configuration.ConfigurationJDBC;
 import com.lt.constant.ModeOfPayment;
 import com.lt.constant.NotificationType;
 import com.lt.constant.SQLQueriesConstants;
-import com.lt.utils.DBUtils;
+
 
 /**
  * 
@@ -23,7 +25,9 @@ import com.lt.utils.DBUtils;
  *
  */
 public class NotificationDaoOperation implements NotificationDaoInterface{
-	private static volatile NotificationDaoOperation instance=null;
+	@Autowired
+	   private ConfigurationJDBC configurationJdbc;
+	private static  NotificationDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
 	
 	/**
@@ -62,7 +66,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface{
 	@Override
 	public int sendNotification(NotificationType type, int studentId,ModeOfPayment modeOfPayment,double amount) throws SQLException{
 		int notificationId=0;
-		Connection connection=DBUtils.getConnection();
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try
 		{
 			//INSERT_NOTIFICATION = "insert into notification(studentId,type,referenceId) values(?,?,?);";
@@ -115,7 +119,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface{
 	public UUID addPayment(int studentId, ModeOfPayment modeOfPayment,double amount) throws SQLException
 	{
 		UUID referenceId;
-		Connection connection=DBUtils.getConnection();
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try
 		{
 			referenceId=UUID.randomUUID();

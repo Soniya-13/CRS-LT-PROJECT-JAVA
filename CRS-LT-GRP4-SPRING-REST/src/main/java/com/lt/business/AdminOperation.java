@@ -1,5 +1,6 @@
 package com.lt.business;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
@@ -19,14 +20,14 @@ import com.lt.exception.UserNotFoundException;
 
 /**
  * 
- * @author JEDI-03
+ * @author Group-4
  * Implementations of Admin Operations
  * 
  */
 public class AdminOperation implements AdminInterface{
 
-	private static Logger logger = Logger.getLogger(AdminOperation.class);
-	private static volatile AdminOperation instance = null;
+
+	private static  AdminOperation instance = null;
 	
 	private AdminOperation()
 	{
@@ -52,7 +53,7 @@ public class AdminOperation implements AdminInterface{
 	
 	
 	@Override
-	public void deleteCourse(String dropCourseCode, List<Course> courseList) throws CourseNotFoundException, CourseNotDeletedException {
+	public void deleteCourse(String dropCourseCode, List<Course> courseList) throws CourseNotFoundException, CourseNotDeletedException, SQLException {
 		
 		//if(!AdminValidator.isValidDropCourse(dropCourseCode, courseList)) {
 			//logger.error("courseCode: " + dropCourseCode + " not present in catalog!");
@@ -70,7 +71,7 @@ public class AdminOperation implements AdminInterface{
 
 	
 	@Override
-	public void addCourse(Course newCourse, List<Course> courseList) throws CourseFoundException {
+	public void addCourse(Course newCourse, List<Course> courseList) throws CourseFoundException, SQLException {
 		
 		//if(!AdminValidator.isValidNewCourse(newCourse, courseList)) {
 			//logger.error("courseCode: " + newCourse.getCourseCode() + " already present in catalog!");
@@ -88,13 +89,13 @@ public class AdminOperation implements AdminInterface{
 
 
 	@Override
-	public List<Student> viewPendingAdmissions() {
+	public List<Student> viewPendingAdmissions() throws SQLException {
 		return adminDaoOperation.viewPendingAdmissions();
 	}
 	
 	
 	@Override
-	public void approveStudent(int studentId, List<Student> studentList) throws StudentNotFoundForApprovalException {
+	public void approveStudent(int studentId, List<Student> studentList) throws StudentNotFoundForApprovalException, SQLException {
 		
 		//if(!AdminValidator.isValidUnapprovedStudent(studentId, studentList)) {
 			//logger.error("studentId: " + studentId + " is already approvet/not-present!");
@@ -112,7 +113,7 @@ public class AdminOperation implements AdminInterface{
 
 	
 	@Override
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserIdAlreadyInUseException {
+	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserIdAlreadyInUseException, SQLException {
 		
 		try {
 			adminDaoOperation.addProfessor(professor);
@@ -125,7 +126,7 @@ public class AdminOperation implements AdminInterface{
 
 	
 	@Override
-	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException{
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException, SQLException{
 		
 		try {
 			adminDaoOperation.assignCourse(courseCode, professorId);
@@ -138,7 +139,7 @@ public class AdminOperation implements AdminInterface{
 	
 	
 	@Override
-	public List<Course> viewCourses(int catalogId) {
+	public List<Course> viewCourses(int catalogId) throws SQLException {
 		
 		return adminDaoOperation.viewCourses(catalogId);
 		
@@ -146,7 +147,7 @@ public class AdminOperation implements AdminInterface{
 	
 	
 	@Override
-	public List<Professor> viewProfessors() {
+	public List<Professor> viewProfessors() throws SQLException {
 		
 		return adminDaoOperation.viewProfessors();
 		

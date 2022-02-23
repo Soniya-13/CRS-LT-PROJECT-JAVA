@@ -3,8 +3,7 @@ package com.lt.business;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import org.apache.logging.log4j.Logger;
-
+import org.apache.log4j.Logger;
 import com.lt.constant.ModeOfPayment;
 import com.lt.constant.NotificationType;
 import com.lt.dao.NotificationDaoInterface;

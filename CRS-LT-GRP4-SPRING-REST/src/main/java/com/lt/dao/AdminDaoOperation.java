@@ -7,12 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
+import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.lt.bean.Course;
 import com.lt.bean.Professor;
 import com.lt.bean.Student;
 import com.lt.bean.User;
+import com.lt.configuration.ConfigurationJDBC;
 import com.lt.constant.Role;
 import com.lt.constant.SQLQueriesConstants;
 import com.lt.exception.CourseFoundException;
@@ -23,7 +28,7 @@ import com.lt.exception.StudentNotFoundForApprovalException;
 import com.lt.exception.UserIdAlreadyInUseException;
 import com.lt.exception.UserNotAddedException;
 import com.lt.exception.UserNotFoundException;
-import com.lt.utils.DBUtils;
+
 
 
 /**
@@ -31,7 +36,9 @@ import com.lt.utils.DBUtils;
  * 
  */
 public class AdminDaoOperation implements AdminDaoInterface {
-
+	@Autowired
+	   private ConfigurationJDBC configurationJdbc;
+	
 	private static AdminDaoOperation instance = null;
 	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 	private PreparedStatement statement = null;
@@ -51,12 +58,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return instance;
 	}
 	
-	Connection connection = DBUtils.getConnection();
+
 	
 	
 	@Override
-	public void deleteCourse(String courseCode) throws CourseNotFoundException, CourseNotDeletedException{
-		
+	public void deleteCourse(String courseCode) throws CourseNotFoundException, CourseNotDeletedException, SQLException{
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		try {
 			String sql = SQLQueriesConstants.DELETE_COURSE_QUERY;
@@ -83,8 +90,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	
 	@Override
-	public void addCourse(Course course) throws CourseFoundException{
-		
+	public void addCourse(Course course) throws CourseFoundException, SQLException{
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		try {
 			
@@ -116,8 +123,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	
 	@Override
-	public List<Student> viewPendingAdmissions() {
-		
+	public List<Student> viewPendingAdmissions() throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		List<Student> userList = new ArrayList<Student>();
 		try {
@@ -152,8 +159,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 
 	@Override
-	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException {
-		
+	public void approveStudent(int studentId) throws StudentNotFoundForApprovalException, SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		try {
 			String sql = SQLQueriesConstants.APPROVE_STUDENT_QUERY;
@@ -180,8 +187,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 
 	@Override
-	public void addUser(User user) throws UserNotAddedException, UserIdAlreadyInUseException{
-		
+	public void addUser(User user) throws UserNotAddedException, UserIdAlreadyInUseException, SQLException{
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		try {
 			
@@ -214,8 +221,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 
 	@Override
-	public void addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException {
-		
+	public void addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException, SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try {
 			
 			this.addUser(professor);
@@ -263,8 +270,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	
 
 	@Override
-	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException{
-		
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException, SQLException{
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		try {
 			String sql = SQLQueriesConstants.ASSIGN_COURSE_QUERY;
@@ -292,8 +299,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 	
 
-	public List<Course> viewCourses(int catalogId) {
-		
+	public List<Course> viewCourses(int catalogId) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		List<Course> courseList = new ArrayList<>();
 		try {
@@ -327,8 +334,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	
 
 	@Override
-	public List<Professor> viewProfessors() {
-		
+	public List<Professor> viewProfessors() throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		statement = null;
 		List<Professor> professorList = new ArrayList<>();
 		try {

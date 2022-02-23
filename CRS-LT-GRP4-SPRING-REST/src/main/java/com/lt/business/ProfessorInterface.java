@@ -21,7 +21,7 @@ public interface ProfessorInterface {
 	public List<EnrolledStudent> viewEnrolledStudents(int profId) throws SQLException;
 	
 	
-	public List<Course> getCourses(int userId);
+	public List<Course> getCourses(int userId) throws Exception;
 	
-	public String getProfessorById(String profId);
+	public String getProfessorById(String profId) throws SQLException;
 }

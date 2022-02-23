@@ -1,6 +1,7 @@
 package com.lt.business;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.lt.bean.Course;
@@ -23,25 +24,25 @@ public interface AdminInterface {
 	
 
 	
-	public void deleteCourse(String courseCode, List<Course> courseList) throws CourseNotFoundException, CourseNotDeletedException;
+	public void deleteCourse(String courseCode, List<Course> courseList) throws CourseNotFoundException, CourseNotDeletedException, SQLException;
 	
 	
-	public void addCourse(Course course, List<Course> courseList) throws CourseFoundException;
+	public void addCourse(Course course, List<Course> courseList) throws CourseFoundException, SQLException;
 	
 	
-	public List<Student> viewPendingAdmissions();
+	public List<Student> viewPendingAdmissions() throws SQLException;
 	
 	
-	public void approveStudent(int studentId, List<Student> studentList) throws StudentNotFoundForApprovalException;
+	public void approveStudent(int studentId, List<Student> studentList) throws StudentNotFoundForApprovalException, SQLException;
 	
 	
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserIdAlreadyInUseException;	
+	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserIdAlreadyInUseException, SQLException;	
 	
 	
-	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException;
+	public void assignCourse(String courseCode, int professorId) throws CourseNotFoundException, UserNotFoundException, SQLException;
 	
-	public List<Course> viewCourses(int catalogId);
+	public List<Course> viewCourses(int catalogId) throws SQLException;
 	
 	
-	public List<Professor> viewProfessors();
+	public List<Professor> viewProfessors() throws SQLException;
 }

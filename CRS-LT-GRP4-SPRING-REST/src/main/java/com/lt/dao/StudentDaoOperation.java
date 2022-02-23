@@ -9,14 +9,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.logging.log4j.Logger;
-
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.lt.bean.Student;
 import com.lt.business.StudentOperation;
+import com.lt.configuration.ConfigurationJDBC;
 import com.lt.constant.SQLQueriesConstants;
 import com.lt.exception.StudentNotRegisteredException;
-import com.lt.utils.DBUtils;
+
 
 /**
  * 
@@ -24,8 +26,10 @@ import com.lt.utils.DBUtils;
  * Class to implement Student Dao Operations
  *
  */
+
 public class StudentDaoOperation implements StudentDaoInterface {
-	
+	@Autowired
+	   private ConfigurationJDBC configurationJdbc;
 	private static  StudentDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(StudentOperation.class);
 	
@@ -58,10 +62,11 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	 * @param student: student object containing all the fields
 	 * @return true if student is added, else false
 	 * @throws StudentNotRegisteredException
+	 * @throws SQLException 
 	 */
 	@Override
-	public int addStudent(Student student) throws StudentNotRegisteredException{
-		Connection connection=DBUtils.getConnection();
+	public int addStudent(Student student) throws StudentNotRegisteredException, SQLException{
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		int studentId=0;
 		try
 		{
@@ -113,10 +118,11 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	 * Method to retrieve Student Id from User Id
 	 * @param userId
 	 * @return Student Id
+	 * @throws SQLException 
 	 */
 	@Override
-	public int getStudentId(int userId) {
-		Connection connection=DBUtils.getConnection();
+	public int getStudentId(int userId) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_STUDENT_ID);
 			statement.setInt(1, userId);
@@ -140,10 +146,11 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	 * Method to check if Student is approved
 	 * @param studentId
 	 * @return boolean indicating if student is approved
+	 * @throws SQLException 
 	 */
 	@Override
-	public boolean isApproved(int studentId) {
-		Connection connection=DBUtils.getConnection();
+	public boolean isApproved(int studentId) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.IS_APPROVED);
 			statement.setInt(1, studentId);

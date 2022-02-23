@@ -5,18 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.lt.configuration.ConfigurationJDBC;
 import com.lt.constant.SQLQueriesConstants;
 import com.lt.exception.UserNotFoundException;
-import com.lt.utils.DBUtils;
+
 
 /**
  * 
  * @author Group-4
  * Class to implement User Dao Operations
  */
+
 public class UserDaoOperation implements UserDaoInterface{
+	@Autowired
+	   private ConfigurationJDBC configurationJdbc;
 	private static  UserDaoOperation instance=null;
 	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
 	
@@ -49,10 +55,11 @@ public class UserDaoOperation implements UserDaoInterface{
 	 * @param userID
 	 * @param newPassword
 	 * @return Update Password operation Status
+	 * @throws SQLException 
 	 */
 	@Override
-	public boolean updatePassword(String userId, String newPassword) {
-		Connection connection=DBUtils.getConnection();
+	public boolean updatePassword(String userId, String newPassword) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.UPDATE_PASSWORD);
 			
@@ -88,10 +95,11 @@ public class UserDaoOperation implements UserDaoInterface{
 	 * @param password
 	 * @return Verify credentials operation status
 	 * @throws UserNotFoundException
+	 * @throws SQLException 
 	 */
 	@Override
-	public boolean verifyCredentials(int userId, String password) throws UserNotFoundException {
-		Connection connection = DBUtils.getConnection();
+	public boolean verifyCredentials(int userId, String password) throws UserNotFoundException, SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try
 		{
 			//open db connection
@@ -144,10 +152,11 @@ public class UserDaoOperation implements UserDaoInterface{
 	 * Method to get Role of User from DataBase
 	 * @param userId
 	 * @return Role
+	 * @throws SQLException 
 	 */
 	@Override
-	public String getRole(int userId) {
-		Connection connection=DBUtils.getConnection();
+	public String getRole(int userId) throws SQLException {
+		Connection connection = configurationJdbc.dataSource().getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ROLE);
 			statement.setInt(1, userId);
